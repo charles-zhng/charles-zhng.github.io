@@ -12,4 +12,4 @@ Currently, I'm working on a [grant](https://www.umass.edu/news/article/geoscient
 
 I'm also working on a project on learning out-of-distribution generalization of concepts in different modalities.
 
-Contact me if you have any opportunities I might find interesting :)
+Contact me if you have any opportunities I might find interesting: charleszhang216 at gmail dot com
