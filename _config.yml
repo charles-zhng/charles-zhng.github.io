@@ -4,6 +4,9 @@ author: "Charles Zhang"
 
 theme: minima
 
+plugins: 
+ - jekyll-seo-tag
+ 
 base_url: /
 
 # Minima social links
