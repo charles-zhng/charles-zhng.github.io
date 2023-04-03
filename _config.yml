@@ -1,5 +1,5 @@
-title: Charles
-description: My website
+title: Charles Zhang
+description: Built from [this repo](https://github.com/jsanz/gh-pages-minima-starter)
 author: "Charles Zhang"
 
 theme: minima
@@ -22,7 +22,7 @@ minima:
 header_pages:
   - _pages/frontpage.md
   - _pages/about.md
-  - _pages/archive.md
+  - _pages/research.md
 
 include:
     - _pages

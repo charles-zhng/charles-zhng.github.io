@@ -1,8 +1,7 @@
 ---
 permalink: /
 layout: home
-title: Welcome
-list_title: My blog posts
+title: 
 ---
 
-I stole this from [this repo](https://github.com/jsanz/gh-pages-minima-starter)
+Welcome to my website! This is an attempt at having a web presence. Click around to learn more about me and my research!
