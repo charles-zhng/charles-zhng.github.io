@@ -1,5 +1,5 @@
 ---
-permalink: /about
+permalink: /
 layout: home
 title: About me
 ---
