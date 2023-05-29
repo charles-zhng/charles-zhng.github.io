@@ -8,8 +8,8 @@ My research interests are generally in biologically inspired AI and NeuroAI. Goo
 
 I got my start in AI research as a part of the [BINDS Lab](https://groups.cs.umass.edu/binds/) working independently on continual learning, multi-task learning, and modularity in neural networks. 
 
-Currently, I'm working on a [project](https://www.umass.edu/news/article/geoscientist-awarded-21m-grant-create-global-open-source-software-system-tracking) to apply neural networks for better hydrological analysis—I hope to continue to apply my knowledge to environmental work in the future. 
+In my final year of undergrad, I worked on an interdisciplinary project to apply neural networks for better hydrological analysis—I hope to continue to apply my knowledge an skills to environmental work in the future. 
 
-I'm also working on a project on learning out-of-distribution generalization of concepts in different modalities.
+For the course CS591NR, I worked on a semester-long project on learning out-of-distribution generalization of relational concepts. I'm planning on continuing this work and perhaps get it published!
 
-Contact me if you have any opportunities I might find interesting: charleszhang216 at gmail dot com
+Contact me if you have any opportunities I might like: charleszhang216 at gmail dot com

@@ -4,7 +4,7 @@ layout: page
 title: cool pics
 ---
 
-I'm no photographer but here are some pretty pics!
+Some pretty pics I took on my phone
 
 ![MTL-MFA](../assets/pics/MTL-MFA.jpeg)
 ![window 1](../assets/pics/window1.jpeg)

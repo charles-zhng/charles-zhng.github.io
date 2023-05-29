@@ -4,4 +4,4 @@ layout: home
 title: About me
 ---
 
-I'm a final semester senior at UMass Amherst majoring in Computer Science and minoring in philosophy. Generally interested in anything related to the cognitive sciences. I like staying active, love sleeping a full 8 hours, and watch rock climbing youtube videos in my free time :) 
+I graduatead from UMass Amherst with a major in Computer Science and a minor in philosophy. Current a SWE intern at Amazon. Generally interested in anything related to the cognitive sciences. I like staying active, love sleeping a full 8 hours, and binge rock climbing youtube videos in my free time :) 
