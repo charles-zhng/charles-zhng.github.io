@@ -4,16 +4,12 @@ layout: page
 title: cool pics
 ---
 
-Some pretty pics I took on my phone
-
-![MTL-MFA](../assets/pics/MTL-MFA.jpeg)
-![window 1](../assets/pics/window1.jpeg)
-![window 2](../assets/pics/window2.jpeg)
-![dusk](../assets/pics/dusk.jpeg)
-![foliage](../assets/pics/foliage.jpeg)
-![duboisview](../assets/pics/duboisview.jpeg)
-![mountainwater](../assets/pics/mountainwater.jpeg)
-![water](../assets/pics/water.jpeg)
+Sometimes I like the pictures I take:
+| | | |
+|:-------------------------:|:-------------------------:|:-------------------------:|
+|<img width="1604" alt="Museum in Montreal" src="../assets/pics/MTL-MFA.jpeg"> |  <img width="1604" alt="School Window" src="../assets/pics/window1.jpeg">|<img width="1604" alt="dusk" src="../assets/pics/dusk.jpeg">|
+|<img width="1604" alt="foliage" src="../assets/pics/foliage.jpeg">  |  <img width="1604" alt="view from the library" src="../assets/pics/duboisview.jpeg">|<img width="1604" alt="rockaway" src="../assets/pics/water.jpeg">|
+|<img width="1604" alt="lamplight" src="../assets/pics/lamplight.jpeg"> | <img width="1604" alt="crow" src="../assets/pics/crow.jpeg"> | <img width="1604" alt="hikers" src="../assets/pics/hikers.jpeg">
 
 
 
