@@ -1,3 +1,3 @@
 # charles-zhng.github.io
 
-wip
+[charles-zhng.github.io](charles-zhng.github.io)
