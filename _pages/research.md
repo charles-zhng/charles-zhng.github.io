@@ -3,9 +3,7 @@ permalink: /research
 layout: page
 title: Research
 ---
-# About my research
-
-My main research interests are generally in AI and NeuroAI. AI is cool, and understanding the brain is even cooler! At the [Ölveczky Lab](https://olveczkylab.oeb.harvard.edu/), I'm building a platform to model embodied animal agents using deep reinforcement learning.
+My main research interests are generally in AI and NeuroAI. AI is cool, and understanding the brain is even cooler! At the [Ölveczky Lab](https://olveczkylab.oeb.harvard.edu/), I'm building a platform to model embodied animal agents using deep reinforcement learning. Looking to apply to PhD programs in 2024 for a 2025 start!
 
 ## Previously
 
