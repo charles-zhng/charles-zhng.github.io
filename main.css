@@ -1,3 +1,52 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Theme toggle button styles */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: rgba(128, 128, 128, 0.2);
+}
+
+/* Ensure links are visible in dark mode */
+a {
+  color: #0066cc;
+}
+
+[data-theme="dark"] a {
+  color: #66b3ff;
+}
+
 html {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: larger;
@@ -14,20 +63,31 @@ a:hover {
 }
 
 #content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%) ;
+    position: relative;
     text-align: center;
-    max-width: 520px;
+    max-width: 720px;
+    width: 90%;
     padding: 32px;
     line-height: 1.6em;
+    margin: 20px auto;
+}
+
+/* Make text more readable with the wider content */
+ol {
+    text-align: left;
+    padding-left: 1.2em;
+}
+
+p {
+    margin: 1em auto;
+    max-width: 600px;
 }
 
 .avatar {
     border-radius: 50%;
     width: 150px;
+    max-width: 30%;
+    min-width: 100px;
 }
 
 .icons {
@@ -47,9 +107,28 @@ a:hover {
 }
 
 .icons a {
-    color: black;
+    color: var(--text-color);
 }
 
 .icons a:hover {
     color: #1565c0;
+}
+
+[data-theme="dark"] .icons a:hover {
+    color: #66b3ff;
+}
+
+/* Make the content scrollable on very small screens */
+@media screen and (max-height: 700px) {
+    body {
+        align-items: flex-start;
+        padding: 20px 0;
+        min-height: unset;
+        height: auto;
+    }
+    
+    #content {
+        margin-top: 60px;
+        margin-bottom: 20px;
+    }
 }

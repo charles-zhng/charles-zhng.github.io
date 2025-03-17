@@ -45,9 +45,35 @@
       integrity="sha512-KlJCpRsLf+KKu2VQa5vmRuClRFjxc5lXO03ixZt82HZUk41+1I0bD8KBSA0fY290ayMfWYI9udIqeOWSu1/uZg=="
       crossorigin="anonymous"
     />
+
+    <!-- Dark mode script -->
+    <script>
+      // Check for saved theme preference, otherwise use system preference
+      const getPreferredTheme = () => {
+        const savedTheme = localStorage.getItem('theme')
+        if (savedTheme) {
+          return savedTheme
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      }
+
+      // Apply theme to document
+      const setTheme = (theme) => {
+        document.documentElement.setAttribute('data-theme', theme)
+        localStorage.setItem('theme', theme)
+      }
+
+      // Set initial theme
+      setTheme(getPreferredTheme())
+    </script>
   </head>
 
   <body>
+    <!-- Dark mode toggle button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i>
+    </button>
+
     <section id="content">
       <!-- Avatar image -->
       <img src="me.jpg" alt="Headshot" class="avatar"/>
@@ -61,7 +87,7 @@
       <p>
         I'm applying to PhD programs this year, and will be supported by the NSF CSGrad4US fellowship (for CS programs).
       </p>
-      <h3>Research Interests</h3>
+      <h3>Research</h3>
       <ol>
         <li>Design novel systems to imbue AI with the adaptive embodied intelligence seen in animals. This includes things like adaptive continuous control, continual learning, and autonomous behavior.</li>
         <li>Use artificial neural networks to model animal intelligence and behavior in interpretable ways to understand how the brain works through abstractions.</li>
@@ -86,6 +112,29 @@
         </li> -->
       </ul>
     </section>
+
+    <!-- Theme toggle script -->
+    <script>
+      const themeToggle = document.getElementById('theme-toggle')
+      const themeIcon = themeToggle.querySelector('i')
+
+      // Update button icon based on current theme
+      const updateIcon = () => {
+        const theme = document.documentElement.getAttribute('data-theme')
+        themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon'
+      }
+
+      // Initialize icon
+      updateIcon()
+
+      // Handle toggle click
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme')
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark'
+        setTheme(newTheme)
+        updateIcon()
+      })
+    </script>
   </body>
  
 </html>
