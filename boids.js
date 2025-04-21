@@ -2,6 +2,7 @@
 
 // --- Configuration ---
 const BOID_COUNT = 100;
+const MOBILE_BOID_COUNT = 40; // Fewer boids for mobile
 const MAX_SPEED = 3;
 const MAX_FORCE = 0.05;
 const PERCEPTION_RADIUS = 50;
@@ -290,40 +291,98 @@ function resizeCanvas() {
     });
 }
 
+// Helper function to update mousePos from event
+function updateTargetPosition(event) {
+    if (event.touches && event.touches.length > 0) {
+        // Use the first touch point
+        mousePos = new Vector(event.touches[0].clientX, event.touches[0].clientY);
+    } else if (event.clientX !== undefined && event.clientY !== undefined) {
+        // Use mouse coordinates
+        mousePos = new Vector(event.clientX, event.clientY);
+    } else {
+        mousePos = null; // Reset if no valid position found
+    }
+}
+
 function setup() {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
+    // Determine boid count based on screen size
+    const currentBoidCount = window.innerWidth < 768 ? MOBILE_BOID_COUNT : BOID_COUNT;
+
     // Initialize boids
     flock = [];
-    for (let i = 0; i < BOID_COUNT; i++) {
+    for (let i = 0; i < currentBoidCount; i++) {
         flock.push(new Boid(canvas.width, canvas.height));
     }
 
-    // Track mouse movement
+    // --- Event Listeners ---
+
+    // Mouse Movement
     document.addEventListener('mousemove', (event) => {
-        mousePos = new Vector(event.clientX, event.clientY);
+        if (!isRepelling) { // Only track mouse if not actively repelling via touch
+             updateTargetPosition(event);
+        }
     });
     document.addEventListener('mouseleave', () => {
-        mousePos = null; // Set to null when mouse leaves the window
-        isRepelling = false; // Stop repelling if mouse leaves while held down
+        mousePos = null;
+        // isRepelling is handled by mouseup/touchend
     });
 
-    // Track mouse down for repel force
+    // Mouse Click/Hold
     document.addEventListener('mousedown', (event) => {
-        // Only activate repel with the primary mouse button (usually left)
         if (event.button === 0) {
-             isRepelling = true;
-             // Update mousePos immediately on down event
-             mousePos = new Vector(event.clientX, event.clientY);
+            isRepelling = true;
+            updateTargetPosition(event); // Update position immediately
         }
     });
-
-    // Track mouse up to stop repel force
     document.addEventListener('mouseup', (event) => {
-        if (event.button === 0) { 
+        if (event.button === 0) {
             isRepelling = false;
         }
+    });
+
+    // Touch Events
+    const themeToggleButton = document.getElementById('theme-toggle'); // Get reference to the button
+
+    document.addEventListener('touchstart', (event) => {
+        // Check if the touch is on the theme toggle button
+        if (themeToggleButton && event.target.closest('#theme-toggle') === themeToggleButton) {
+            return; // Don't interfere with button clicks
+        }
+
+        if (event.touches.length > 0) {
+            isRepelling = true;
+            updateTargetPosition(event);
+            event.preventDefault(); // Prevent default touch actions like scroll
+        }
+    }, { passive: false }); // Need passive: false to call preventDefault
+
+    document.addEventListener('touchmove', (event) => {
+        // Check if the touch move started on the theme toggle button
+        if (themeToggleButton && event.target.closest('#theme-toggle') === themeToggleButton) {
+            return; // Don't interfere
+        }
+
+        if (isRepelling && event.touches.length > 0) {
+            updateTargetPosition(event);
+            event.preventDefault(); // Prevent scroll while dragging finger
+        }
+    }, { passive: false });
+
+    document.addEventListener('touchend', (event) => {
+        // Check touches.length because it might be a multi-touch ending
+        // We only stop repelling when the *last* finger is lifted
+        if (event.touches.length === 0) { 
+            isRepelling = false;
+            mousePos = null; // Reset target when touch ends
+        }
+    });
+
+    document.addEventListener('touchcancel', (event) => {
+        isRepelling = false;
+        mousePos = null;
     });
 
     // Start the animation loop
