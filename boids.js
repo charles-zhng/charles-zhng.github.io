@@ -2,7 +2,7 @@
 
 // --- Configuration ---
 const BOID_COUNT = 100;
-const MOBILE_BOID_COUNT = 40; // Fewer boids for mobile
+// const MOBILE_BOID_COUNT = 40; // Fewer boids for mobile - REMOVED
 const MAX_SPEED = 3;
 const MAX_FORCE = 0.05;
 const PERCEPTION_RADIUS = 50;
@@ -280,128 +280,85 @@ const ctx = canvas.getContext('2d');
 let flock = [];
 let mousePos = null; // Use null when mouse is out
 let isRepelling = false; // Flag to indicate if mouse is held down
+// let touchStartY = null; // REMOVED
+// const SCROLL_THRESHOLD = 10; // REMOVED
 
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    // Reinitialize boids if needed, or just update their bounds
     flock.forEach(boid => {
         boid.canvasWidth = canvas.width;
         boid.canvasHeight = canvas.height;
     });
 }
 
-// Helper function to update mousePos from event
+// Helper function to update mousePos from event - REMOVED
+/*
 function updateTargetPosition(event) {
-    if (event.touches && event.touches.length > 0) {
-        // Use the first touch point
-        mousePos = new Vector(event.touches[0].clientX, event.touches[0].clientY);
-    } else if (event.clientX !== undefined && event.clientY !== undefined) {
-        // Use mouse coordinates
-        mousePos = new Vector(event.clientX, event.clientY);
-    } else {
-        mousePos = null; // Reset if no valid position found
-    }
+    // ... removed ...
 }
+*/
 
 function setup() {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Determine boid count based on screen size
-    const currentBoidCount = window.innerWidth < 768 ? MOBILE_BOID_COUNT : BOID_COUNT;
+    // Determine boid count based on screen size - REVERTED
+    // const currentBoidCount = window.innerWidth < 768 ? MOBILE_BOID_COUNT : BOID_COUNT; // REMOVED
 
     // Initialize boids
     flock = [];
-    for (let i = 0; i < currentBoidCount; i++) {
+    for (let i = 0; i < BOID_COUNT; i++) { // Use BOID_COUNT directly
         flock.push(new Boid(canvas.width, canvas.height));
     }
 
-    // --- Event Listeners ---
+    // --- Event Listeners (Reverted to mouse-only) ---
 
     // Mouse Movement
     document.addEventListener('mousemove', (event) => {
-        if (!isRepelling) { // Only track mouse if not actively repelling via touch
-             updateTargetPosition(event);
-        }
+        // Simple update, no isRepelling check needed here in this version
+        mousePos = new Vector(event.clientX, event.clientY);
     });
     document.addEventListener('mouseleave', () => {
         mousePos = null;
-        // isRepelling is handled by mouseup/touchend
+        isRepelling = false; // Stop repelling if mouse leaves while held down
     });
 
     // Mouse Click/Hold
     document.addEventListener('mousedown', (event) => {
-        if (event.button === 0) {
+        if (event.button === 0) { // Primary button
             isRepelling = true;
-            updateTargetPosition(event); // Update position immediately
+            mousePos = new Vector(event.clientX, event.clientY); // Update position immediately
         }
     });
     document.addEventListener('mouseup', (event) => {
-        if (event.button === 0) {
+        if (event.button === 0) { // Primary button
             isRepelling = false;
         }
     });
 
-    // Touch Events
-    const themeToggleButton = document.getElementById('theme-toggle'); // Get reference to the button
-
-    document.addEventListener('touchstart', (event) => {
-        // Check if the touch is on the theme toggle button
-        if (themeToggleButton && event.target.closest('#theme-toggle') === themeToggleButton) {
-            return; // Don't interfere with button clicks
-        }
-
-        if (event.touches.length > 0) {
-            isRepelling = true;
-            updateTargetPosition(event);
-            event.preventDefault(); // Prevent default touch actions like scroll
-        }
-    }, { passive: false }); // Need passive: false to call preventDefault
-
-    document.addEventListener('touchmove', (event) => {
-        // Check if the touch move started on the theme toggle button
-        if (themeToggleButton && event.target.closest('#theme-toggle') === themeToggleButton) {
-            return; // Don't interfere
-        }
-
-        if (isRepelling && event.touches.length > 0) {
-            updateTargetPosition(event);
-            event.preventDefault(); // Prevent scroll while dragging finger
-        }
-    }, { passive: false });
-
-    document.addEventListener('touchend', (event) => {
-        // Check touches.length because it might be a multi-touch ending
-        // We only stop repelling when the *last* finger is lifted
-        if (event.touches.length === 0) { 
-            isRepelling = false;
-            mousePos = null; // Reset target when touch ends
-        }
-    });
-
-    document.addEventListener('touchcancel', (event) => {
-        isRepelling = false;
-        mousePos = null;
-    });
+    // Touch Events - REMOVED
+    /*
+    const themeToggleButton = document.getElementById('theme-toggle');
+    document.addEventListener('touchstart', ..., { passive: false });
+    document.addEventListener('touchmove', ..., { passive: false });
+    document.addEventListener('touchend', ...);
+    document.addEventListener('touchcancel', ...);
+    */
 
     // Start the animation loop
     animate();
 }
 
 function animate() {
-    // const currentTime = Date.now(); // No longer needed for repel
-    // repelPoints = repelPoints.filter(point => point.expirationTime > currentTime); // No longer needed
-
-    // Clear canvas with appropriate background color based on theme
+    // Clear canvas
     const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
-    ctx.fillStyle = isDarkMode ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)'; // Semi-transparent clear for trails effect
+    ctx.fillStyle = isDarkMode ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Update and draw each boid
     for (let boid of flock) {
-        // Pass the isRepelling flag to flock
-        boid.flock(flock, mousePos, isRepelling);
+        boid.flock(flock, mousePos, isRepelling); // Pass isRepelling flag
         boid.update();
         boid.draw(ctx);
     }
