@@ -207,3 +207,62 @@ a:hover {
   font-weight: 700;
   margin-bottom: calc(var(--spacing-unit) * 0.5);
 }
+
+/* Publications */
+.publication {
+  background: rgba(0, 0, 0, 0.03);
+  padding: calc(var(--spacing-unit) * 0.75);
+  border-radius: 8px;
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+}
+
+[data-theme="dark"] .publication {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.pub-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.02em;
+}
+
+.pub-authors {
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.pub-venue {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+}
+
+.pub-links {
+  display: flex;
+  gap: calc(var(--spacing-unit) * 0.75);
+  flex-wrap: wrap;
+}
+
+.pub-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] .pub-links a {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.pub-links a:hover {
+  background: var(--accent-color);
+  color: #ffffff;
+}
