@@ -2,167 +2,178 @@
 
 <html lang="en">
 
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VFD4CZKYG4"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VFD4CZKYG4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-      gtag('config', 'G-VFD4CZKYG4');
-    </script>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    gtag('config', 'G-VFD4CZKYG4');
+  </script>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Define title -->
-    <title>Charles Zhang</title>
+  <!-- Define title -->
+  <title>Charles Zhang</title>
 
-    <!-- Include favicon. Use, e.g., https://favicon.io/ -->
-    <link rel="icon" type="image/png" href="me.jpg" sizes="32x32" />
+  <!-- Include favicon. Use, e.g., https://favicon.io/ -->
+  <link rel="icon" type="image/png" href="me.jpg" sizes="32x32" />
 
-    <!-- Include style sheets -->
-    <link rel="stylesheet" href="main.css" />
+  <!-- Include style sheets -->
+  <link rel="stylesheet" href="main.css" />
 
-    <!-- Fonts from Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- Fonts from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
-    <!-- Load FontAwesome (for icons) -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-      crossorigin="anonymous"
-    />
+  <!-- Load FontAwesome (for icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" />
 
-    <!-- Load Academicons (for more icons) -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.2/css/academicons.min.css"
-      integrity="sha512-KlJCpRsLf+KKu2VQa5vmRuClRFjxc5lXO03ixZt82HZUk41+1I0bD8KBSA0fY290ayMfWYI9udIqeOWSu1/uZg=="
-      crossorigin="anonymous"
-    />
+  <!-- Load Academicons (for more icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.2/css/academicons.min.css"
+    integrity="sha512-KlJCpRsLf+KKu2VQa5vmRuClRFjxc5lXO03ixZt82HZUk41+1I0bD8KBSA0fY290ayMfWYI9udIqeOWSu1/uZg=="
+    crossorigin="anonymous" />
 
-    <!-- Dark mode script -->
-    <script>
-      // Check for saved theme preference, otherwise use system preference
-      const getPreferredTheme = () => {
-        const savedTheme = localStorage.getItem('theme')
-        if (savedTheme) {
-          return savedTheme
-        }
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  <!-- Dark mode script -->
+  <script>
+    // Check for saved theme preference, otherwise use system preference
+    const getPreferredTheme = () => {
+      const savedTheme = localStorage.getItem('theme')
+      if (savedTheme) {
+        return savedTheme
       }
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    }
 
-      // Apply theme to document
-      const setTheme = (theme) => {
-        document.documentElement.setAttribute('data-theme', theme)
-        localStorage.setItem('theme', theme)
-      }
+    // Apply theme to document
+    const setTheme = (theme) => {
+      document.documentElement.setAttribute('data-theme', theme)
+      localStorage.setItem('theme', theme)
+    }
 
-      // Set initial theme
-      setTheme(getPreferredTheme())
-    </script>
-  </head>
+    // Set initial theme
+    setTheme(getPreferredTheme())
+  </script>
+</head>
 
-  <body>
-    <!-- Dark mode toggle button -->
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-      <i class="fas fa-moon"></i>
-    </button>
+<body>
+  <!-- Dark mode toggle button -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+    <i class="fas fa-moon"></i>
+  </button>
 
-    <main>
-      <header>
-        <div class="header-content">
-          <div class="header-text">
-            <h1>Charles Zhang</h1>
-            <p class="subtitle">PhD Student at Harvard University</p>
-          </div>
-          <div class="image-container">
-            <img src="me.jpeg" alt="Charles Zhang" class="avatar"/>
-            <div class="social-links">
-              <a href="https://github.com/charles-zhng" title="GitHub"><i class="fab fa-github"></i></a>
-              <a href="https://www.linkedin.com/in/chrls-zhng/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            </div>
+  <main>
+    <header>
+      <div class="header-content">
+        <div class="header-text">
+          <h1>Charles Zhang</h1>
+          <p class="subtitle">PhD Student at Harvard University</p>
+        </div>
+        <div class="image-container">
+          <img src="me.jpeg" alt="Charles Zhang" class="avatar" />
+          <div class="social-links">
+            <a href="https://github.com/charles-zhng" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/chrls-zhng/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
           </div>
         </div>
-      </header>
+      </div>
+    </header>
 
-      <section id="about">
-        <h2>About</h2>
-        <p>I'm a Computer Science PhD student in the <a href="https://pehlevan.seas.harvard.edu/">Pehlevan Group</a> at Harvard University, interested in artificial intelligence and neuroscience. I was previously a post-bacc researcher in the <a href="https://olveczkylab.oeb.harvard.edu/">Ölveczky Lab</a>, where I use deep reinforcement learning to model rodent motor control and learning. I did my undergrad at UMass Amherst, where I majored in Computer Science and minored in Philosophy.</p>
-        <p></p>
-      </section>
+    <section id="about">
+      <h2>About</h2>
+      <p>I'm a Computer Science PhD student in the <a href="https://pehlevan.seas.harvard.edu/">Pehlevan Group</a> at
+        Harvard University, interested in artificial intelligence and neuroscience. I was previously a post-bacc
+        researcher in the <a href="https://olveczkylab.oeb.harvard.edu/">Ölveczky Lab</a>, where I use deep
+        reinforcement learning to model rodent motor control and learning. I did my undergrad at UMass Amherst, where I
+        majored in Computer Science and minored in Philosophy.</p>
+      <p></p>
+    </section>
 
-      <section id="news">
-        <h2>News</h2>
-        <ul class="news-list">
-          <li>August 2025: I'm starting a PhD in Computer Science at Harvard!</li>
-          <li>March 2025: I presented a poster at COSYNE 2025 titled "A GPU-Accelerated Pipeline for Imitating Animal Motor Control"!</li>
-        </ul>
-      </section>
+    <section id="news">
+      <h2>News</h2>
+      <ul class="news-list">
+        <li>August 2025: I'm starting a PhD in Computer Science at Harvard!</li>
+        <li>March 2025: I presented a poster at COSYNE 2025 titled "A GPU-Accelerated Pipeline for Imitating Animal
+          Motor Control"!</li>
+      </ul>
+    </section>
 
-      <section id="publications">
-        <h2>Publications</h2>
-        <div class="publication">
-          <div class="pub-title">MIMIC-MJX: Neuromechanical Emulation of Animal Behavior</div>
-          <div class="pub-authors"><strong>Charles Y. Zhang*</strong>, Yuanjia Yang*, Aidan Sirbu, Elliott T.T. Abe, Emil Wärnberg, Eric J. Leonardis, Diego E. Aldarondo, Adam Lee, Aaditya Prasad, Jason Foat, Kaiwen Bian, Joshua Park, Rusham Bhatt, Hutton Saunders, Akira Nagamori, Ayesha R. Thanawalla, Kee Wui Huang, Fabian Plum, Hendrik K. Beck, Steven W. Flavell, David Labonte, Blake A. Richards, Bingni W. Brunton, Eiman Azim, Bence P. Ölveczky, Talmo D. Pereira</div>
-          <div class="pub-venue">arXiv preprint, 2025</div>
-          <div class="pub-links">
-            <a href="https://arxiv.org/abs/2511.20532"><i class="ai ai-arxiv"></i> arXiv</a>
-            <a href="https://mimic-mjx.talmolab.org/"><i class="fas fa-globe"></i> Project Page</a>
-          </div>
+    <section id="publications">
+      <h2>Publications</h2>
+      <div class="publication">
+        <div class="pub-title">MIMIC-MJX: Neuromechanical Emulation of Animal Behavior</div>
+        <div class="pub-authors"><strong>Charles Y. Zhang*</strong>, Yuanjia Yang*, Aidan Sirbu, Elliott T.T. Abe, Emil
+          Wärnberg, Eric J. Leonardis, Diego E. Aldarondo, Adam Lee, Aaditya Prasad, Jason Foat, Kaiwen Bian, Joshua
+          Park, Rusham Bhatt, Hutton Saunders, Akira Nagamori, Ayesha R. Thanawalla, Kee Wui Huang, Fabian Plum, Hendrik
+          K. Beck, Steven W. Flavell, David Labonte, Blake A. Richards, Bingni W. Brunton, Eiman Azim, Bence P.
+          Ölveczky, Talmo D. Pereira</div>
+        <div class="pub-venue">arXiv preprint, 2025</div>
+        <div class="pub-links">
+          <a href="https://arxiv.org/abs/2511.20532"><i class="ai ai-arxiv"></i> arXiv</a>
+          <a href="https://mimic-mjx.talmolab.org/"><i class="fas fa-globe"></i> Project Page</a>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="research">
-        <h2>Research</h2>
-        <div class="research-interests">
-          <div class="interest">
-            <h3>AI & Embodied Intelligence</h3>
-            <p>Designing novel systems to imbue AI with the adaptive embodied intelligence seen in animals, focusing on adaptive continuous control, continual learning, and autonomous behavior.</p>
-          </div>
-          <div class="interest">
-            <h3>Neural Networks & Neuroscience</h3>
-            <p>Leveraging deep learning to model animal intelligence and behavior to understand how the brain works through computational abstractions.</p>
-          </div>
+    <section id="research">
+      <h2>Research</h2>
+      <div class="research-interests">
+        <div class="interest">
+          <h3>Computational Neuroscience</h3>
+          <p>Using deep learning to model animal intelligence and behavior to understand how the brain works
+            through computational abstractions.</p>
         </div>
-      </section>
+        <div class="interest">
+          <h3>Interpretability</h3>
+          <p>Understanding neural network representations at the level of learning dynamics and solutions at different
+            levels of abstraction.</p>
+        </div>
+        <div class="interest">
+          <h3>AI & Embodied Intelligence</h3>
+          <p>Designing AI systems with the adaptive embodied intelligence seen in animals, focusing on adaptive
+            continuous control, continual learning, and autonomous behavior.</p>
+        </div>
 
-      <section id="contact">
-        <h2>Contact</h2>
-        <p>charleszhang[at]fas[dot]harvard[dot]edu</p>
-      </section>
-    </main>
+      </div>
+    </section>
 
-    <!-- Theme toggle script -->
-    <script>
-      const themeToggle = document.getElementById('theme-toggle')
-      const themeIcon = themeToggle.querySelector('i')
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>charleszhang[at]fas[dot]harvard[dot]edu</p>
+    </section>
+  </main>
 
-      // Update button icon based on current theme
-      const updateIcon = () => {
-        const theme = document.documentElement.getAttribute('data-theme')
-        themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon'
-      }
+  <!-- Theme toggle script -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle')
+    const themeIcon = themeToggle.querySelector('i')
 
-      // Initialize icon
+    // Update button icon based on current theme
+    const updateIcon = () => {
+      const theme = document.documentElement.getAttribute('data-theme')
+      themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon'
+    }
+
+    // Initialize icon
+    updateIcon()
+
+    // Handle toggle click
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme')
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark'
+      setTheme(newTheme)
       updateIcon()
+    })
+  </script>
 
-      // Handle toggle click
-      themeToggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme')
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark'
-        setTheme(newTheme)
-        updateIcon()
-      })
-    </script>
+  <!-- Boid Simulation Script -->
+  <script src="boids.js"></script>
+</body>
 
-    <!-- Boid Simulation Script -->
-    <script src="boids.js"></script>
-  </body>
- 
 </html>
