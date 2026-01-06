@@ -1,7 +1,7 @@
 // boids.js
 
 // --- Configuration ---
-const BOID_COUNT = 100;
+const BOID_COUNT = 60;
 // const MOBILE_BOID_COUNT = 40; // Fewer boids for mobile - REMOVED
 const MAX_SPEED = 3;
 const MAX_FORCE = 0.05;
@@ -351,10 +351,8 @@ function setup() {
 }
 
 function animate() {
-    // Clear canvas
-    const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
-    ctx.fillStyle = isDarkMode ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // Clear canvas each frame to avoid trails
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Update and draw each boid
     for (let boid of flock) {
