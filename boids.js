@@ -266,7 +266,7 @@ class Boid {
 
         // Determine color based on theme
         const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
-        ctx.fillStyle = isDarkMode ? 'rgba(40, 60, 80, 0.3)' : 'rgba(173, 216, 230, 0.8)';
+        ctx.fillStyle = isDarkMode ? 'rgba(60, 90, 120, 0.45)' : 'rgba(173, 216, 230, 0.8)';
         ctx.fill();
         ctx.restore();
     }
