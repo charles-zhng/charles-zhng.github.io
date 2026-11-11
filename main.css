@@ -256,3 +256,142 @@ a:hover {
 .pub-links a:hover {
   color: var(--text-color);
 }
+
+/* Photos page */
+main.photos-page {
+  max-width: 880px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--muted-color);
+  text-decoration: none;
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+.collection {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.15);
+  interpolate-size: allow-keywords;
+}
+
+.collection summary {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-unit);
+  padding: var(--spacing-unit) 0;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.collection summary::-webkit-details-marker {
+  display: none;
+}
+
+.collection-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.collection-meta {
+  flex: 1;
+  font-size: 0.85rem;
+  color: var(--muted-color);
+}
+
+.collection summary i {
+  font-size: 0.75rem;
+  color: var(--muted-color);
+  transition: transform 0.2s ease;
+}
+
+.collection[open] summary i {
+  transform: rotate(180deg);
+}
+
+/* Smooth open/close where supported; instant elsewhere */
+.collection::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition: block-size 0.2s ease, content-visibility 0.2s allow-discrete;
+}
+
+.collection[open]::details-content {
+  block-size: auto;
+}
+
+/* Justified rows: photos.html sets each row's height so it exactly fills the width */
+.photo-grid {
+  --row-height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: var(--spacing-unit);
+}
+
+.photo-row {
+  display: flex;
+  gap: 4px;
+}
+
+.photo-grid img {
+  flex: var(--ar) 1 0;
+  min-width: 0;
+  height: 100%;
+  object-fit: cover;
+  cursor: zoom-in;
+  transition: opacity 0.2s ease;
+}
+
+.photo-grid img:hover {
+  opacity: 0.85;
+}
+
+#lightbox {
+  margin: auto;
+  border: none;
+  padding: 0;
+  background: none;
+  max-width: none;
+  max-height: none;
+  cursor: zoom-out;
+}
+
+#lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+#lightbox img {
+  display: block;
+  width: min(92vw, calc(92vh * var(--ar)));
+  height: auto;
+  aspect-ratio: var(--ar);
+  background-size: cover;
+}
+
+@media (max-width: 600px) {
+  .photo-grid {
+    --row-height: 120px;
+  }
+
+  .collection summary {
+    flex-wrap: wrap;
+    row-gap: 0;
+  }
+
+  .collection-title {
+    flex: 1;
+  }
+
+  .collection-meta {
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  .photos-page h1 {
+    text-align: left;
+  }
+}

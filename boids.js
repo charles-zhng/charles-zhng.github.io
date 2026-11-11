@@ -1,10 +1,12 @@
 // boids.js
 
 // --- Configuration ---
+// <script src="boids.js" data-calm> gives slow, cursor-independent background drift
+const CALM = document.currentScript?.hasAttribute('data-calm');
 const BOID_COUNT = 60;
 // const MOBILE_BOID_COUNT = 40; // Fewer boids for mobile - REMOVED
-const MAX_SPEED = 3;
-const MAX_FORCE = 0.05;
+const MAX_SPEED = CALM ? 0.8 : 3;
+const MAX_FORCE = CALM ? 0.01 : 0.05;
 const PERCEPTION_RADIUS = 50;
 const SEPARATION_RADIUS = 25;
 const ALIGNMENT_WEIGHT = 1.0;
@@ -355,7 +357,7 @@ function animate() {
 
     // Update and draw each boid
     for (let boid of flock) {
-        boid.flock(flock, mousePos, isRepelling); // Pass isRepelling flag
+        boid.flock(flock, CALM ? null : mousePos, !CALM && isRepelling); // Pass isRepelling flag
         boid.update();
         boid.draw(ctx);
     }
